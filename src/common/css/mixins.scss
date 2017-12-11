@@ -1,0 +1,195 @@
+$themeColor:#004ea2;
+//手机移动响应
+@mixin device-size($size){
+  $device-size-list:$size,640px,600px,435px,414px,413px,412px,411px,400px,385px,384px,375px,360px,320px;
+  @each $i in $device-size-list{
+    @media screen and(max-width:#{$i}) {
+      html{
+        font-size: 100px*$i/$size;
+      }
+    }
+  }
+}
+
+
+//全屏
+@mixin fullScreen{
+  position: fixed;
+  top:0;
+  left:0;
+  right: 0;
+  bottom:0;
+  margin:0;
+}
+//定位+移动居中
+@mixin middle(){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+@mixin center($width,$height){
+  width: $width;
+  height: $height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($height) / 2;
+  margin-left: -($width) / 2;
+}
+//正方形
+@mixin square1($size){
+  width: $size;
+  height: $size;
+}
+@mixin square2($size,$bg){
+  width: $size;
+  height: $size;
+  background: $bg;
+}
+@mixin square3($w,$h,$bg){
+  width: $w;
+  height: $h;
+  background: $bg;
+}
+
+//圆角矩形  正方形、矩形圆角，矩形圆角加背景颜色
+@mixin roundedRectangle2($size,$r){
+  width: $size;
+  height: $size;
+  border-radius: $r;
+}
+@mixin roundedRectangle3($w,$h,$r){
+  width: $w;
+  height: $h;
+  border-radius: $r;
+}
+@mixin roundedRectangle4($w,$h,$r,$bg){
+  width: $w;
+  height: $h;
+  border-radius: $r;
+  background: $bg;
+}
+//圆
+@mixin circle($size,$bg){
+  width: $size;
+  height: $size;
+  background: $bg;
+  border-radius: $size/2;
+}
+
+//按钮
+@mixin btn($w,$h,$bg){
+  width:$w;
+  height:$h;
+  background:$bg;
+  text-align: center;
+  border-radius:$h/2;
+  line-height: $h;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+//背景图片-尺寸100%    参数没有$h时为正方形
+@mixin bg($name){
+  background: url($name) center center no-repeat;
+}
+@mixin bgImg3($w,$h,$name){
+  width:$w;
+  height:$h;
+  @include bg($name);
+  background-size: 100% 100%;
+}
+@mixin bgImg2($w,$name){
+  width:$w;
+  height:$w;
+  @include bg($name);
+  background-size: 100% 100%;
+}
+
+@mixin input($w,$h){
+  width:$w;
+  height:$h;
+  padding-left:1rem;
+  background: transparent;
+  border:1px solid #aaa;
+  border-radius:4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+@mixin kuang($w){
+  width:$w;
+  height:0.9rem;
+  padding:0 0.35rem;
+  background: transparent;
+  border:1px solid #00bfa5;
+  border-radius:0.45rem;
+  box-sizing: border-box;
+}
+@mixin input($w,$h){
+  width:$w;
+  height:$h;
+  border:1px solid #ccc;
+  @include borderRadius(4px);
+  background-color: transparent;
+  color:#2b2b2b;
+}
+@mixin btn($w,$h,$bg){
+  width:$w;
+  height:$h;
+  @include borderRadius(4px);
+  background:$bg;
+  text-align: center;
+  background: $bg;
+  color:#fff;
+  line-height:$h;
+  font-size:20px;
+  font-weight:bold;
+  letter-spacing:12px;
+  cursor: pointer;
+}
+@mixin btn1($w,$h,$bg,$r){
+  width:$w;
+  height:$h;
+  @include borderRadius($r);
+  background:$bg;
+  text-align: center;
+  background: $bg;
+  color:#fff;
+  line-height:$h;
+  font-size:15px;
+  border: none;
+  cursor: pointer;
+}
+@mixin borderRadius($r){
+  -webkit-border-radius:$r;
+  -moz-border-radius:$r;
+  border-radius:$r;
+}
+@mixin shadow{
+  @include borderRadius(10px);
+  box-shadow: 5px 5px 10px #dfdbda,-5px -5px 10px #dfdbda;
+  -moz-box-shadow: 5px 5px 10px #dfdbda,-5px -5px 10px #dfdbda;
+  -webkit-box-shadow: 5px 5px 10px #dfdbda,-5px -5px 10px #dfdbda;
+}
+@mixin shadow2{
+  moz-box-shadow: 0px 1px 9px #c2c2c2;
+  -webkit-box-shadow: 0px 1px 9px #c2c2c2;
+  box-shadow: 0px 1px 9px #c2c2c2;
+}
+
+@mixin borderBox(){
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin bgSize($c){
+  -webkit-background-size: $c;
+  -moz-background-size: $c;
+  -ms-background-size: $c;
+  background-size: $c;
+}
+
+
